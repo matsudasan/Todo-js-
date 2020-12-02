@@ -18,10 +18,19 @@ const SetTaks=()=>{
     tasklist.innerHTML=""
     tasks.map((text,index)=>{
         const li=document.createElement("li")
-        li.innerHTML=text+'<i class="fas fa-trash"></i>'
+        li.innerHTML=Escape(text)+'<i class="fas fa-trash"></i>'
         li.children[0].addEventListener("click",()=>RemoveTask(index))
         tasklist.appendChild(li)
     })
+}
+
+const Escape=(s)=>{
+    return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 const RemoveTask=(index)=>{
